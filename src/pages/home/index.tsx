@@ -2,20 +2,55 @@ import { Link } from "react-router-dom";
 
 export default function Home() {
   return (
-    <div>
+    <>
       <header>
-        <div>
+        <nav>
           <Link to="/posts/new">글쓰기</Link>
           <Link to="/posts">게시글</Link>
           <Link to="/profile">프로필</Link>
-        </div>
+        </nav>
       </header>
-      <div className="post-list">Post List</div>
+      <div className="post__navigation">
+        <div className="post__navigation--active">전체</div>
+        <div>나의 글</div>
+      </div>
+      <main className="post__list">
+        {[...Array(10)].map((e, index) => (
+          <div key={index} className="post__box">
+            <Link to={`/posts/${index}`}>
+              <div className="post__profile-box">
+                <div className="post__profile"></div>
+                <div className="post__author-name">테스트명</div>
+                <div className="post__date">2024.04.04 목요일</div>
+              </div>
+              <h2 className="post__title">게시글 {index}</h2>
+              <p className="post__text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+                ultrices nisi id leo bibendum commodo. Integer semper venenatis
+                congue. Sed sed nisl accumsan, eleifend elit vestibulum, maximus
+                mi. Nullam fermentum metus erat. Nulla non elementum lorem. In
+                interdum eu mi eget tristique. Fusce faucibus ultricies elit et
+                gravida. Vivamus scelerisque quam placerat, vulputate massa in,
+                pulvinar erat. Cras posuere ipsum at nunc suscipit, eu egestas
+                mi mattis. Fusce purus metus, ornare ac nisi sit amet, maximus
+                consequat risus. In porta volutpat velit quis gravida. Nulla
+                dapibus sed ipsum et feugiat. Curabitur posuere a orci ut
+                viverra. Donec nec augue auctor, blandit velit in, mattis
+                mauris. Nullam egestas blandit lorem, ut commodo nunc rutrum et.
+              </p>
+              <div className="post__utils-box">
+                <div className="post__delete">삭제</div>
+                <div className="post__edit">수정</div>
+              </div>
+            </Link>
+          </div>
+        ))}
+      </main>
       <footer>
-        <div>Menu 1</div>
-        <div>Menu 2</div>
-        <div>Menu 3</div>
+        <Link to="/posts/new">글쓰기</Link>
+        <Link to="/posts">게시글</Link>
+        <Link to="/profile">프로필</Link>
       </footer>
-    </div>
+    </>
   );
 }
