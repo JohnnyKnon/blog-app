@@ -144,7 +144,13 @@ footer a:focus, footer a:hover{
   cursor: pointer;
 }
 
-.post__edit:hover, .post__edit:focus{
+.post__edit a{
+  text-decoration: none;
+  color: gray;
+}
+
+.post__edit:hover, .post__edit:focus,
+.post__edit a:hover, .post__edit a:focus{
   color: black;
   cursor: pointer;
 }
